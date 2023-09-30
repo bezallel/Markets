@@ -1,0 +1,441 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* background: url(sky.jpg) !important; */
+    background: black;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    background-position: center !important;
+    /* background: radial-gradient(circle,rgba(3,3,48,1) 0%, rgba(0,0,0,1) 100%); */
+}
+
+.sky{
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle,rgb(2, 2, 12) 0% rgba(0,0,0,1) 100%);
+
+    }
+.night-sky{
+    position: absolute;
+    background: none;
+    width: 100%;
+    height: 90%;
+    margin: 15px;
+    padding: 0;
+    overflow: hidden;
+}
+/* Styles for the stars */
+.fa-asterisk {
+    position: absolute;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    user-drag: none;
+    touch-action: none;
+}
+
+
+.night-sky i.fa-solid.fa-asterisk {
+    animation: glow 2s infinite, fade 3s linear infinite;
+    background: none;
+    font-size: 20px;
+    color: white;
+}
+@keyframes fade {
+    0%, 100% {
+        transform: scale(.1);
+    }
+    50% {
+        transform: scale(1);
+    }
+}
+
+.tooltip {
+    position: absolute;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    pointer-events: none; /* Prevent the tooltip from blocking mouse events on the underlying elements */
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
+  
+  .tooltip strong {
+    font-weight: bold;
+  }
+  
+  /* Additional styles for arrow or pointer (optional) */
+  .tooltip::before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 6px 6px 0;
+    border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .blur-background {
+    filter: blur(15px); /* Apply background blur when the info card is displayed */
+}
+  .modal {
+    display: none;
+    position: fixed;
+    color: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: bounceAndHover 3s ease infinite; /* Adjust the duration and easing as needed */
+    z-index: 1;
+    overflow: auto;
+}
+/* Add this CSS to your stylesheet */
+@keyframes bounceAndHover {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  
+
+.info-card {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+#modalClose {
+    background-color: #121404;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    box-shadow: 4px 4px 8px rgba(11, 11, 11, 0.1), -4px -4px 8px rgba(30, 29, 29, 0.5); /* Neumorphism-style box shadow */
+    transition: all 0.2s ease-in-out;
+}
+
+/* Dashboard Styles */
+.dashboard-container {
+    background-color: none;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%; /* Change width to 100% */
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    z-index: 1;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.dashboard {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard label {
+    margin: 10px 0;
+    color: white;
+    font-size: 15px;
+}
+
+/* Style the custom dropdown */
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style the custom dropdown */
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style the dropdown container */
+.dropdown-container {
+    position: fixed;
+    bottom: 20px; /* Adjust this value to control the distance from the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1; /* Ensure the dropdown container is above other elements */
+    background: none;
+}
+
+/* Style the dropdown selected element */
+.dropdown-selected {
+    height: 50px;
+    width: 190px;
+    line-height: 50px;
+    padding: 0 20px;
+    background-color: #000000;
+    border-radius: 50px;
+    color: rgb(255, 241, 241);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.08); /* Matte black shadow */
+    filter: drop-shadow(0px 4px 6px rgba(255, 255, 255, 0.2)); /* Mild light shadow */
+}
+
+/* Style the button text color */
+.dropdown-selected span {
+    flex-grow: 1;
+    padding: 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Style the dropdown options */
+.dropdown-options {
+    display: none;
+    position: absolute;
+    bottom: 60px; /* Adjust this value to control the distance from the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 190px;
+    color: rgb(152, 152, 152);
+    max-height: 150px;
+    overflow-y: auto;
+    background-color: #302a2a;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 3; /* Ensure the dropdown options are above other elements */
+    max-height: 150px; /* Set a maximum height for scroll effect */
+    overflow-y: auto; 
+}
+
+/* Show the dropdown options when .active class is added to .custom-dropdown */
+.custom-dropdown.active .dropdown-options {
+    display: block;
+}
+
+.custom-dropdown .fa-arrow-up-from-bracket {
+    font-size: 15px;
+    color: white;
+}
+
+/* Style the dropdown option items */
+.dropdown-option {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: rgb(0, 0, 0);
+    padding: 10px 20px !important;
+    border-top: 2px solid rgba(60, 55, 55, 0.2)
+}
+
+.dropdown-option:hover {
+    background-color: #14151d;
+}
+
+
+.neumorphism-button {
+    background-color: black; /* Background color for the button */
+    color: #716c6c; /* Text color for the button */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 0 0 0 20px;
+    cursor: pointer;
+    box-shadow: 4px 4px 8px rgba(173, 163, 163, 0.1), -4px -4px 8px rgba(38, 35, 35, 0.5); /* Neumorphism-style box shadow */
+    transition: all 0.01s ease-in-out;
+}
+
+.neumorphism-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 5px #1f1e1e, -1px -1px 5px #252121;
+}
+
+.fa-arrow-up-from-bracket {
+    transition: transform 0.3s ease !important; /* Add smooth transition effect */
+}
+
+/* Rotated state of the arrow icon */
+.fa-arrow-up-from-bracket.rotated {
+    transform: rotate(180deg) !important;
+}
+
+/* Add your existing styles here */
+
+/* Pop-up Card Styles */
+/* Style the popup card */
+.popup-card {
+    display: none;
+    position: fixed;
+    top: 50%; /* Vertically center */
+    left: 50%; /* Horizontally center */
+    transform: translate(-50%, -130%); /* Center the element */
+    width: 37%;
+    height: 15%;
+    line-height: 1.5;
+    background: none;
+    z-index: 999;
+    color: white;
+    backdrop-filter: blur(10px); /* Apply blur to the popup */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.popup-open {
+    filter: blur(10px); /* Apply blur to the background when popup is open */
+}
+
+/* Style the content inside the popup card */
+.popup-card h2 {
+    font-size: 35px;
+}
+
+.popup-card p {
+    font-size: 18px;
+    margin: -13px;
+}
+
+.card-content {
+    background: none;
+    font-size: 30px;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 912px) and (max-height: 1368px) and (min-width: 280px) and (min-height: 360px) {
+    body {
+        overflow: hidden; /* Prevent body overflow to avoid interference with swipe scrolling */
+    }
+
+    .night-sky {
+        /* ... (your existing styles) ... */
+        overflow-y: scroll; /* Enable vertical scrolling for the night sky element */
+        -webkit-overflow-scrolling: touch; /* Enable swipe scrolling for iOS devices */
+    }
+    
+    /* Apply overflow: hidden; to .popup-card when it's open */
+    .popup-open .popup-card {
+        overflow: hidden;
+    }
+
+    .popup-card {
+        width: 80%; /* Adjust the width for smaller screens */
+        height: 25%; /* Adjust the height for smaller screens */
+        top: 40%; /* Vertically center */
+        left: 50%; /* Horizontally center */
+        transform: translate(-50%, -50%); /* Center the element */
+        line-height: 1.5;
+        background: none;
+        z-index: 999;
+        color: white;
+        backdrop-filter: blur(10px); /* Apply blur to the popup */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .popup-card h2 {
+        font-size: 25px;
+    }
+    
+    .popup-card p {
+        font-size: 14px;
+        margin: -13px;
+    }
+
+    .info-card {
+        background-color: transparent;
+        padding: 20px;
+        border-radius: 5px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 50px;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        width: 70%; /* Adjust the width for smaller screens */
+    }
+
+    .dropdown-options {
+        max-height: 150px; /* Set your desired maximum height */
+        overflow-y: scroll; /* Enable vertical scrolling with a scrollbar */
+        padding-right: 8px; /* Add some padding to avoid content cutoff */
+        -webkit-overflow-scrolling: touch; /* Enable swipe scrolling for iOS devices */
+    }
+
+    .dashboard-container {
+        position: fixed;
+        bottom: 16px;
+        left: 0;
+        width: 100%;
+    }
+
+    /* Styles for stars on smaller screens */
+    .fa-asterisk {
+        font-size: 32px;
+    }
+
+    .night-sky {
+        position: absolute;
+        background: none;
+        width: calc(100% - 30px); /* Subtract 30px from both sides for margin */
+        height: 90%;
+        margin: 15px;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .night-sky i.fa-asterisk {
+        text-shadow: 0px 0px 10px white;
+        animation: fade 3s linear infinite;
+        background: none;
+        font-size: 25px;
+        color: white;
+    }
+}
