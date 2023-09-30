@@ -88,16 +88,6 @@ const marketsData = [
 // Get the night-sky container
 const nightSky = document.querySelector('.night-sky');
 
-// Define gradient colors
-const gradientColors = [
-    'linear-gradient(45deg, #FF6B6B, #FFA8A8)',
-    'linear-gradient(45deg, #C56CD6, #F1ABF7)',
-    'linear-gradient(45deg, #FF9A8B, #FFC3A0)',
-    'linear-gradient(45deg, #00A8FF, #4DFFFF)',
-    'linear-gradient(45deg, #FF5656, #FFABAB)',
-    'linear-gradient(45deg, #FF6A88, #FFAA88)',
-];
-
 // Create stars with market data
 marketsData.forEach((market) => {
     const starContainer = document.createElement('div'); // Container for the star
@@ -114,9 +104,6 @@ marketsData.forEach((market) => {
     star.style.left = `${Math.random() * 100}%`;
     star.style.top = `${Math.random() * 100}%`;
 
-    // Set star color randomly from gradientColors
-    const randomColorIndex = Math.floor(Math.random() * gradientColors.length);
-    starContainer.style.backgroundImage = gradientColors[randomColorIndex];
 
     // Append the star to the container
     starContainer.appendChild(star);
@@ -152,6 +139,8 @@ marketsData.forEach((market) => {
         displayInfoCard(name, location, info);
     });
 });
+
+
 
 // Function to display the tooltip
 function showTooltip(name, tooltip) {
@@ -270,7 +259,7 @@ function changeAsteriskColors() {
         star.style.textShadow = `0 0 10px ${newColor}`;
     });
 
-    // Update the star icon color on the change color button
+    
     const changeColorButtonIcon = document.querySelector('#changeColorButton i');
     changeColorButtonIcon.style.color = newColor;
 
@@ -282,8 +271,8 @@ function changeAsteriskColors() {
     if (newColor === 'cyan' || newColor === 'white') {
         modalCloseButton.style.color = 'black';
     } else {
-        modalCloseButton.style.color = 'white'; // Set font color to white for other background colors
-    }
+        modalCloseButton.style.color = 'white'; 
+        }
 
     // Update the color of the dropdown arrow
     const arrowIcon = document.querySelector('.fa-arrow-up-from-bracket');
@@ -294,8 +283,10 @@ function changeAsteriskColors() {
 const changeColorButton = document.getElementById('changeColorButton');
 changeColorButton.addEventListener('click', () => {
     changeAsteriskColors();
-    // Add your code to handle color changes on button click
 });
+
+
+
 
 
 const dropdownSelected = document.querySelector('.dropdown-selected');
@@ -316,12 +307,17 @@ dropdownSelected.addEventListener('click', function () {
     }
 });
 
+
+
+
+
+
 // Add click event listener to the Close button
 const modalCloseButton = document.getElementById('modalClose');
 modalCloseButton.addEventListener('click', () => {
-    // Add your code to close the modal here
-    // For example, you can toggle the modal's display property
+   
 });
+
 
 
 
@@ -331,6 +327,7 @@ function makeStarsMovable() {
     const stars = document.querySelectorAll('.fa-asterisk');
     let isDragging = false;
     let starToDrag = null;
+    let offsetX, offsetY; // Store initial offset values
 
     stars.forEach((star) => {
         star.style.touchAction = 'manipulation'; // Increase touch sensitivity
@@ -343,12 +340,14 @@ function makeStarsMovable() {
             isDragging = true;
             starToDrag = star;
 
-            const offsetX = e.clientX || e.touches[0].clientX - star.getBoundingClientRect().left;
-            const offsetY = e.clientY || e.touches[0].clientY - star.getBoundingClientRect().top;
+            // Calculate the initial offset values
+            offsetX = (e.clientX || e.touches[0].clientX) - star.getBoundingClientRect().left;
+            offsetY = (e.clientY || e.touches[0].clientY) - star.getBoundingClientRect().top;
 
             const moveStar = (e) => {
                 if (!isDragging || starToDrag !== star) return;
 
+                // Calculate the new position based on the initial offset values
                 const x = (e.clientX || e.touches[0].clientX) - offsetX;
                 const y = (e.clientY || e.touches[0].clientY) - offsetY;
 
