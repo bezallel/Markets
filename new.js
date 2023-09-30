@@ -322,62 +322,72 @@ modalCloseButton.addEventListener('click', () => {
 
 
 
-// Function to make stars movable
+// Function to make stars movable with tap-and-hold for mobile devices
 function makeStarsMovable() {
     const stars = document.querySelectorAll('.fa-asterisk');
-    let isDragging = false;
-    let starToDrag = null;
-    let offsetX, offsetY; // Store initial offset values
 
     stars.forEach((star) => {
-        star.style.touchAction = 'manipulation'; // Increase touch sensitivity
+        let isDragging = false;
+        let tapTimeout;
+        let tapHoldThreshold = 500; // Adjust the threshold (in milliseconds) as needed
 
         star.addEventListener('mousedown', startMove);
         star.addEventListener('touchstart', startMove, { passive: false });
 
         function startMove(e) {
-            e.preventDefault(); // Prevent default touch behavior
-            isDragging = true;
-            starToDrag = star;
+            e.preventDefault();
 
-            // Calculate the initial offset values
-            offsetX = (e.clientX || e.touches[0].clientX) - star.getBoundingClientRect().left;
-            offsetY = (e.clientY || e.touches[0].clientY) - star.getBoundingClientRect().top;
+            // Detect tap-and-hold
+            tapTimeout = setTimeout(() => {
+                isDragging = true;
+                clearTimeout(tapTimeout); // Clear the tap timeout
+                tapTimeout = null;
 
-            const moveStar = (e) => {
-                if (!isDragging || starToDrag !== star) return;
+                // Prevent further mouse events on this star
+                star.removeEventListener('mousedown', startMove);
+                
+                // Add move and end event listeners for dragging
+                document.addEventListener('mousemove', moveStar);
+                document.addEventListener('touchmove', moveStar, { passive: false });
+                document.addEventListener('mouseup', endMove);
+                document.addEventListener('touchend', endMove);
+            }, tapHoldThreshold);
+        }
 
-                // Calculate the new position based on the initial offset values
-                const x = (e.clientX || e.touches[0].clientX) - offsetX;
-                const y = (e.clientY || e.touches[0].clientY) - offsetY;
+        function moveStar(e) {
+            if (!isDragging) return;
 
-                star.style.transition = 'none';
-                star.style.left = x + 'px';
-                star.style.top = y + 'px';
-            };
+            const x = e.clientX || e.touches[0].clientX;
+            const y = e.clientY || e.touches[0].clientY;
 
-            const endMove = () => {
+            star.style.left = x - star.offsetWidth / 2 + 'px'; // Adjust the centering
+            star.style.top = y - star.offsetHeight / 2 + 'px';
+        }
+
+        function endMove() {
+            if (isDragging) {
                 isDragging = false;
-                starToDrag = null;
 
+                // Remove move and end event listeners for dragging
                 document.removeEventListener('mousemove', moveStar);
                 document.removeEventListener('touchmove', moveStar, { passive: false });
                 document.removeEventListener('mouseup', endMove);
                 document.removeEventListener('touchend', endMove);
+            } else {
+                // If not dragging, it's a single tap, display info card
+                const name = star.dataset.name;
+                const location = star.dataset.location;
+                const info = star.dataset.info;
 
-                star.style.transition = 'all 0.3s ease'; // Adjust the transition properties as needed
-            };
-
-            document.addEventListener('mousemove', moveStar);
-            document.addEventListener('touchmove', moveStar, { passive: false });
-            document.addEventListener('mouseup', endMove);
-            document.addEventListener('touchend', endMove);
+                displayInfoCard(name, location, info);
+            }
         }
     });
 }
 
-// Call the function to make stars movable
+// Call the function to make stars movable with tap-and-hold
 makeStarsMovable();
+
 
 
 
@@ -511,4 +521,52 @@ nightSky.addEventListener('click', (e) => {
     }
 });
 
-// Add your other JavaScript code here...
+// Disable tooltip for mobile devices
+function disableTooltipForMobile() {
+    const tooltips = document.querySelectorAll('.tooltip');
+    const isMobile = window.innerWidth <= 767; // Adjust the breakpoint as needed
+
+    tooltips.forEach((tooltip) => {
+        if (isMobile) {
+            tooltip.style.display = 'none';
+        } else {
+            tooltip.style.display = 'block';
+        }
+    });
+}
+
+// Call the function to disable tooltip for mobile devices
+disableTooltipForMobile();
+
+// Function to make stars clickable on mobile devices
+function makeStarsClickable() {
+    const stars = document.querySelectorAll('.fa-asterisk');
+
+    stars.forEach((star) => {
+        star.style.cursor = 'pointer'; // Change cursor style to indicate clickability
+
+        star.addEventListener('click', (e) => {
+            const name = star.dataset.name;
+            const location = star.dataset.location;
+            const info = star.dataset.info;
+
+            // Display market information in the info card
+            displayInfoCard(name, location, info);
+        });
+
+        // Handle touch events for mobile devices
+        star.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Prevent default touch behavior
+            const name = star.dataset.name;
+            const location = star.dataset.location;
+            const info = star.dataset.info;
+
+            // Display market information in the info card
+            displayInfoCard(name, location, info);
+        });
+    });
+}
+
+// Call the function to make stars clickable on mobile devices
+makeStarsClickable();
+
