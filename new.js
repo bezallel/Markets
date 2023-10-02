@@ -485,7 +485,7 @@ function startTextAnimation() {
 
     const headingText = "Explore the Markets of Lagos";
     const bodyText = `
-    Markets play a pivotal role in our lives, acting as community heroes and underlining their importance in the fabric of an economy. They foster connections, support local businesses, and ensure food security.\nEmbark on a cosmic adventure to explore Lagos city's markets among the stars and discover their unique and captivating characteristics.\nClick a star. Move a star. Either way, they have something to say.\nHappy exploring! 
+    Markets play a pivotal role in our lives, acting as community heroes and underlining their importance in the fabric of an economy.\nThey foster connections, support local businesses, and ensure food security.\nEmbark on a cosmic adventure to explore Lagos city's markets among the stars and discover their unique and captivating characteristics.\nClick a star. Move a star. Either way, they have something to say.\nHappy exploring! 
     `;
 
 
