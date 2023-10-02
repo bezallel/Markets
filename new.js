@@ -255,44 +255,27 @@ dropdownOptions.forEach((option) => {
 const brightColors = ['#800080', 'blue', 'orange', '#c54c82','#9bc400', '#ff0000', 'cyan', 'white'];
 let currentColorIndex = 0; // Start with the first color in the array
 
-// Function to shuffle the stars randomly
-function shuffleStars() {
-    const marketStarsContainer = document.querySelector('.night-sky');
-    const marketStars = Array.from(marketStarsContainer.querySelectorAll('.fa-asterisk'));
-
-    // Shuffle the stars using the Fisher-Yates algorithm
-    for (let i = marketStars.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [marketStars[i], marketStars[j]] = [marketStars[j], marketStars[i]];
-    }
-
-    // Remove existing stars and append shuffled stars to the container
-    marketStarsContainer.innerHTML = '';
-    marketStars.forEach((star) => {
-        marketStarsContainer.appendChild(star);
-    });
-}
-
-// Add click event listener to the button with class "neumorphism-button" to shuffle the stars
-const shuffleStarsButton = document.querySelector('.neumorphism-button');
-shuffleStarsButton.addEventListener('click', () => {
-    shuffleStars(); // Shuffle the stars when the button is clicked
-});
-
-
-
-// Function to change the color of asterisks for market stars and the button icons
-function changeAsteriskColors() {
-    const marketStars = document.querySelectorAll('.fa-asterisk');
+// Function to shuffle the star positions and change their colors
+function shuffleStarsAndChangeColor() {
+    const starContainers = Array.from(document.querySelectorAll('.star-container, .fa-asterisk'));
     currentColorIndex = (currentColorIndex + 1) % brightColors.length;
     const newColor = brightColors[currentColorIndex]; // Get the next color
 
-    marketStars.forEach((star) => {
+    // Shuffle the star containers randomly
+    starContainers.forEach((starContainer) => {
+        const newX = Math.random() * 100;
+        const newY = Math.random() * 100;
+        starContainer.style.left = `${newX}%`;
+        starContainer.style.top = `${newY}%`;
+    });
+
+    // Change the color of all star icons
+    starContainers.forEach((star) => {
         star.style.color = newColor;
         star.style.textShadow = `0 0 10px ${newColor}`;
     });
 
-    
+    // Update the color of the "Change Color" button icon
     const changeColorButtonIcon = document.querySelector('#changeColorButton i');
     changeColorButtonIcon.style.color = newColor;
 
@@ -304,7 +287,7 @@ function changeAsteriskColors() {
     if (newColor === 'cyan' || newColor === 'white') {
         modalCloseButton.style.color = 'black';
     } else {
-        modalCloseButton.style.color = 'white'; 
+        modalCloseButton.style.color = 'white';
     }
 
     // Update the color of the dropdown arrow
@@ -315,8 +298,7 @@ function changeAsteriskColors() {
 // Add click event listener to the changeColorButton
 const changeColorButton = document.getElementById('changeColorButton');
 changeColorButton.addEventListener('click', () => {
-    changeAsteriskColors();
-    shuffleStars(); 
+    shuffleStarsAndChangeColor();
 });
 
 
