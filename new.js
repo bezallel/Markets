@@ -255,6 +255,32 @@ dropdownOptions.forEach((option) => {
 const brightColors = ['#800080', 'blue', 'orange', '#c54c82','#9bc400', '#ff0000', 'cyan', 'white'];
 let currentColorIndex = 0; // Start with the first color in the array
 
+// Function to shuffle the stars randomly
+function shuffleStars() {
+    const marketStarsContainer = document.querySelector('.night-sky');
+    const marketStars = Array.from(marketStarsContainer.querySelectorAll('.fa-asterisk'));
+
+    // Shuffle the stars using the Fisher-Yates algorithm
+    for (let i = marketStars.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [marketStars[i], marketStars[j]] = [marketStars[j], marketStars[i]];
+    }
+
+    // Remove existing stars and append shuffled stars to the container
+    marketStarsContainer.innerHTML = '';
+    marketStars.forEach((star) => {
+        marketStarsContainer.appendChild(star);
+    });
+}
+
+// Add click event listener to the button with class "neumorphism-button" to shuffle the stars
+const shuffleStarsButton = document.querySelector('.neumorphism-button');
+shuffleStarsButton.addEventListener('click', () => {
+    shuffleStars(); // Shuffle the stars when the button is clicked
+});
+
+
+
 // Function to change the color of asterisks for market stars and the button icons
 function changeAsteriskColors() {
     const marketStars = document.querySelectorAll('.fa-asterisk');
@@ -279,7 +305,7 @@ function changeAsteriskColors() {
         modalCloseButton.style.color = 'black';
     } else {
         modalCloseButton.style.color = 'white'; 
-        }
+    }
 
     // Update the color of the dropdown arrow
     const arrowIcon = document.querySelector('.fa-arrow-up-from-bracket');
@@ -290,8 +316,8 @@ function changeAsteriskColors() {
 const changeColorButton = document.getElementById('changeColorButton');
 changeColorButton.addEventListener('click', () => {
     changeAsteriskColors();
+    shuffleStars(); 
 });
-
 
 
 
