@@ -348,10 +348,10 @@
 
 /* Media query for smaller screens */
 @media (max-width: 912px) and (max-height: 1368px) and (min-width: 280px) and (min-height: 360px) {
-    body {
-        overflow: hidden; /* Prevent body overflow to avoid interference with swipe scrolling */
+      html, body {
+        overflow: hidden;
+        height: 100%;
     }
-
     .night-sky {
         /* ... (your existing styles) ... */
         overflow-y: scroll; /* Enable vertical scrolling for the night sky element */
