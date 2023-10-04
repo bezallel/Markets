@@ -1,25 +1,28 @@
 var timesRun = 0;
-var stopinterv = setInterval(function twinkling(){
+var stopinterv = setInterval(function twinkling() {
     timesRun += 1;
-    if(timesRun === 50){
+    if (timesRun === 50) {
         clearInterval(stopinterv);
     }
-    for(let i = 0; i < 5; i++){
+    for (let i = 0; i < 5; i++) {
         var starCounts = document.createElement('i');
-        starCounts.className = 'fa-solid fa-asterisk'; 
-        
-        var wh = Math.floor(Math.random(1,10)*15);
-        var $x = Math.floor(Math.random(0,4)*100);
-        var $y = Math.floor(Math.random(0,4)*100);
+        starCounts.className = 'fa-solid fa-asterisk';
 
-        starCounts.style.position = 'relative';
+        // Generate random position within the screen width and height
+        var $x = Math.random() * 100;
+        var $y = Math.random() * 100;
+
+        // Adjust the size and position
+        var wh = Math.floor(Math.random() * 10) + 5; // Random size between 5 and 15 pixels
+        starCounts.style.position = 'absolute'; // Use absolute positioning
         starCounts.style.fontSize = wh + 'px';
         starCounts.style.left = $x + 'vw';
         starCounts.style.top = $y + 'vh';
         starCounts.style.color = 'white';
         document.querySelector('.night-sky').appendChild(starCounts);
     }
-}, 51)
+}, 51);
+
 
 // Your market data (replace with your actual data)
 const marketsData = [
