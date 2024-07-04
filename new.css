@@ -284,6 +284,7 @@
 
 .fa-arrow-up-from-bracket {
     transition: transform 0.3s ease !important; /* Add smooth transition effect */
+     margin-left: 68px;
 }
 
 /* Rotated state of the arrow icon */
