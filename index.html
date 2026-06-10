@@ -8,114 +8,30 @@
     <title>Lagos Markets</title>
     <link rel="stylesheet" href="new.css">
 </head>
-<body class="sky">
-    <!-- Pop-up Card -->
-    <div class="popup-card" id="popupCard">
-        <div class="card-content">
-            <span class="close-btn" id="closeBtn">&times;</span>
-            <h2>Explore the Markets of Lagos</h2>
-            <p>
-                Markets play a pivotal role in our lives, acting as community heroes and underlining their importance in the fabric of an economy. They foster connections, support local businesses, and ensure food security. <br>Embark on a cosmic adventure to explore Lagos city's markets among the stars and discover their unique and captivating characteristics.<br>Click a star. Move a star. Either way, they have something to say. <br>Happy exploring!
-            </p>
-        </div>
-    </div>
+<body>
+   <div id="intro">
+  <h1>Markets of Lagos</h1>
+  <div id="intro-poem"></div>
+  <div id="intro-hint"></div>
+  <button id="ib">Enter</button>
+</div>
 
-    <div class="night-sky container-fluid">
-        <!-- Stars -->
-       
-        <!-- Add more stars as needed -->
-    </div>
-
-    <div class="modal" id="marketModal">
-        <div class="info-card">
-            <strong id="modalName"></strong>
-            <p id="modalLocation"></p>
-            <p id="modalInfo"></p>
-            <button id="modalClose">Close</button>
-        </div>
-    </div>
-    
-
-    <div class="dashboard-container">
-        <div class="dashboard">
-            <div class="custom-dropdown" id="starNameDropdown">
-                <div class="dropdown-selected">
-                    <i class="fa-solid fa-arrow-up-from-bracket"></i></div> 
-                <div class="dropdown-options">
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Abattoir Meat Market">Abattoir</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Agbalata Market">Agbalata</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Agboju Market">Agboju</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Agege Market">Agege</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Ajah Market">Ajah</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Ajina Market">Ajina</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Akodo Market">Akodo</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Alaba international Market">Alaba</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Alade Market">Alade</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Alade Market (New)">New Alade</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Amu Market">Amu</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Apongbon Market">Apongbon</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Aratumi Market">Aratumi</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Arena Market">Arena</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Aswani Market">Aswani</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Bali Market">Bali</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Balogun Market">Balogun</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Bar Beach Market">Bar Beach</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Bariga Market">Bariga</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Cele Market">Cele</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Computer Village">Computer Village</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Daleko Market">Daleko</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Dosunmu Market">Dosunmu</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Ebute Ero Market">Ebute Ero</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Epe Fish Market">Epe Fish Market</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Idi Oro Market">Idi Oro</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Iddo Market">Iddo</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Idumota Market">Idumota</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Ijesha Market">Ijesha</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Ijora Olapa Fish Market">Ijora Olapa</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Ile Epo Market">Ile Epo</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Isale Eko Market">Isale Eko</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Ita Faji Market">Ita Faji</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Itunmoja Market">Itunmoja</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Iyana-Iba Market">Iyana-Iba</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Ikotun Market">Ikotun</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Jankarra Market">Jankarra</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Kajola Plank Market">Kajola Plank</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Katangua Market">Katangua</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Lekki Arts & Crafts Market">Lekki Arts & Crafts</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Ladipo Market">Ladipo</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Ladipo Paper Market">Ladipo Paper</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Leather Market">Leather</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Liverpool Under-Bridge Market">Liverpool</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Makoko Asejire Market">Makoko Asejire</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Mile 12 Market">Mile 12</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Mile 2 Market">Mile 2</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Mushin Market">Mushin</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Odunade Market">Odunade</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Ogba Sunday Market">Ogba Sunday Market</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Ojah Market">Ojah</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Ojodu Market">Ojodu</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Ojuwoye Market">Ojuwoye</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Oke Odo Market">Oke Odo</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Oniru New Market">Oniru New Market</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Onipanu Rod Market">Onipanu</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Oshodi Market">Oshodi</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Owode Onirin Market">Owode Onirin</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Oyingbo Market">Oyingbo</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Pelewura Market">Pelewura</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Rauf Aregbesola Market">Rauf Aregbesola</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Sandgrouse Market">Sandgrouse</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Sangotedo Market">Sangotedo</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Téjúoshó Market">Téjúoshó</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Vespa Market">Vespa</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="White Sands Market">White Sands</div>
-                    <div class="dropdown-option" style="--i:5;" class="option-text" data-value="Yaba Market">Yaba</div>
-            </div>
-            <input type="hidden" name="star" value="">
-        </div>
-        <button id="changeColorButton" class="neumorphism-button">
-            <i class="fas fa-star" style="font-size: 24px; color: white;"></i>
-        </button>
-    </div>
+<div id="sky"></div>
+<div id="uitl"><div id="uitt">Markets of Lagos</div><div id="uits">67 markets &nbsp;·&nbsp; click any star</div></div>
+<button id="shuf">&#10022; Shuffle</button>
+<div id="leg">
+  <div class="lr"><div class="ld" style="width:7px;height:7px;background:rgba(255,255,255,.88);box-shadow:0 0 5px rgba(255,255,255,.6);"></div><span>Major hub</span></div>
+  <div class="lr"><div class="ld" style="width:5px;height:5px;background:rgba(255,255,255,.6);box-shadow:0 0 3px rgba(255,255,255,.35);"></div><span>Specialty</span></div>
+  <div class="lr"><div class="ld" style="width:3px;height:3px;background:rgba(255,255,255,.35);"></div><span>Community</span></div>
+</div>
+<div id="panel">
+  <div id="pi">
+    <div id="pe"></div>
+    <div id="pn"></div>
+    <div id="pl"></div>
+    <div id="pf"></div>
+    <button id="pc">ESC &nbsp;·&nbsp; CLOSE</button>
+  </div>
 </div>
 
     <script src="./new.js"></script>
